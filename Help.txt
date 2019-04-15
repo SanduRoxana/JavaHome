@@ -1,0 +1,17 @@
+- https://mvnrepository.com/artifact/org.springframework/spring-context
+
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.1.6.RELEASE</version>
+</dependency>
+
+- https://github.com/SanduRoxana/
+
+// echo "# Test" >> README.md
+git init
+//git add README.md
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/SanduRoxana/SchoolOfJava2019.git
+git push -u origin master
