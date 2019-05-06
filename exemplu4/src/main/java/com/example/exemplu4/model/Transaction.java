@@ -1,15 +1,16 @@
 package com.example.exemplu4.model;
 
 public class Transaction {
-    private double amount;
+    private int transactionId;
     private String store;
+    private double amount;
 
-    public double getAmount() {
-        return amount;
+    public int getTransactionId() {
+        return transactionId;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setTransactionId(int transactionId) {
+        this.transactionId = transactionId;
     }
 
     public String getStore() {
@@ -20,11 +21,20 @@ public class Transaction {
         this.store = store;
     }
 
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
     @Override
     public String toString() {
         return "Transaction{" +
-                "amount=" + amount +
+                "transactionId=" + transactionId +
                 ", store='" + store + '\'' +
+                ", amount=" + amount +
                 '}';
     }
 }

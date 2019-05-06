@@ -6,6 +6,7 @@ import com.example.exemplu4.service.CardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -18,8 +19,8 @@ public class CardController {
     }
 
     @PostMapping(path = "/add/card")
-    public void addCard(@RequestBody Card card) {
-        cardService.addCard(card);
+    public void addCard(@RequestBody Card card, HttpServletResponse response) {
+        cardService.addCard(card, response);
     }
 
     @GetMapping(path = "/get/card")
@@ -27,24 +28,35 @@ public class CardController {
         return cardService.getCards();
     }
 
-    @PostMapping(path = "/add/transactionCard/{cardNumber}")
-    public void addTransaction(@PathVariable int cardNumber, @RequestBody Transaction transaction) {
-        cardService.addTransaction(cardNumber, transaction);
+    @PutMapping(path = "/update/card/{cardId}")
+    public void updateCard(@PathVariable int cardId, @RequestBody Card card, HttpServletResponse response) {
+        cardService.updateCard(cardId, card, response);
     }
 
-    @GetMapping(path = "/get/transactionCard/{cardNumber}")
-    public List<Transaction> getTransactions(@PathVariable int cardNumber) {
-        return cardService.getTransactions(cardNumber);
+    @DeleteMapping(path = "/delete/card/{cardId}")
+    public void deleteCard(@PathVariable int cardId, HttpServletResponse response) {
+        cardService.deleteCard(cardId, response);
     }
 
-//    @PutMapping(path = "/update/transaction/{cardNumber}/{id}")
-//    public void updateTransaction(@PathVariable int cardNumber, int id, @RequestBody Transaction transaction) {
-//
-//    }
-//
-//    @DeleteMapping(path = "/delete/transaction/{cardNumber}/{id}")
-//    public void deleteTransaction(@PathVariable int cardNumber, int id, @RequestBody Transaction transaction) {
-//
-//    }
+    @PostMapping(path = "/add/cardTransaction/{cardId}")
+    public void addCardTransaction(@PathVariable int cardId, @RequestBody Transaction transaction, HttpServletResponse response) {
+        cardService.addCardTransaction(cardId, transaction, response);
+    }
 
+    @GetMapping(path = "/get/cardTransaction/{cardId}")
+    public List<Transaction> getCardTransactions(@PathVariable int cardId, HttpServletResponse response) {
+        return cardService.getCardTransactions(cardId, response);
+    }
+
+    @PutMapping(path = "/update/cardTransaction/{cardId}/{transactionId}")
+    public void updateCardTransaction(@PathVariable int cardId, @PathVariable int transactionId,
+                                      @RequestBody Card card, HttpServletResponse response) {
+        cardService.updateCardTransaction(cardId, transactionId, card, response);
+    }
+
+    @DeleteMapping(path = "/delete/cardTransaction/{cardId}/{transactionId}")
+    public void deleteCardTransaction(@PathVariable int cardId, @PathVariable int transactionId,
+                                      HttpServletResponse response) {
+        cardService.deleteCardTransaction(cardId, transactionId,response);
+    }
 }

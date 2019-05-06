@@ -4,9 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Card {
+    private int cardId;
     private String ownerName;
-    private int cardNumber;
     private List<Transaction> transactionList = new ArrayList<>();
+
+    public int getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(int cardId) {
+        this.cardId = cardId;
+    }
 
     public String getOwnerName() {
         return ownerName;
@@ -14,14 +22,6 @@ public class Card {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
-    }
-
-    public int getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(int cardNumber) {
-        this.cardNumber = cardNumber;
     }
 
     public List<Transaction> getTransactionList() {
@@ -35,8 +35,9 @@ public class Card {
     @Override
     public String toString() {
         return "Card{" +
-                "ownerName='" + ownerName + '\'' +
-                ", cardNumber=" + cardNumber +
+                "cardId=" + cardId +
+                ", ownerName='" + ownerName + '\'' +
+                ", transactionList=" + transactionList +
                 '}';
     }
 }

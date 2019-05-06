@@ -17,19 +17,30 @@ public class TransactionRepository {
         this.transactions = transactions;
     }
 
-//    public void addTransaction(Transaction transaction) {
-//        transactions.add(transaction);
-//    }
-//
-//    public List<Transaction> getTransactions() {
-//        return transactions;
-//    }
-
-    public void updateTransaction(Transaction transaction) {
-
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
     }
 
-    public void deleteTransaction(Transaction transaction) {
-        transactions.remove(transaction);
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void updateTransaction(int transactionId, Transaction transaction) {
+        for(Transaction t : transactions) {
+            if((t.getTransactionId() == transaction.getTransactionId()) && (transaction.getTransactionId() == transactionId)) {
+                t.setStore(transaction.getStore());
+                t.setAmount(transaction.getAmount());
+                break;
+            }
+        }
+    }
+
+    public void deleteTransaction(int transactionId) {
+        for(Transaction t : transactions) {
+            if (t.getTransactionId() == transactionId) {
+                transactions.remove(t);
+                break;
+            }
+        }
     }
 }
